@@ -43,6 +43,15 @@ public class MainActivity extends Activity {
     }
     setContentView(root);
     root.requestApplyInsets();
+    if (Build.VERSION.SDK_INT >= 33) {
+      getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
+          android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,
+          new android.window.OnBackInvokedCallback() {
+            @Override public void onBackInvoked() {
+              if (web.canGoBack()) web.goBack(); else finish();
+            }
+          });
+    }
   }
   @Override public void onBackPressed() { if(web.canGoBack()) web.goBack(); else super.onBackPressed(); }
 }
