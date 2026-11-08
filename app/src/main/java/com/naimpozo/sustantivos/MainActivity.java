@@ -14,7 +14,7 @@ public class MainActivity extends Activity {
   private WebView web;
   @Override public void onCreate(Bundle b) {
     super.onCreate(b);
-    web = new WebView(this);
+    web = new NoSuggestionsWebView(this);
     web.setWebViewClient(new WebViewClient());
     WebSettings s = web.getSettings();
     s.setJavaScriptEnabled(true);
